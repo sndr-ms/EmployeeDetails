@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+button {
+	text-align : center;
+	font-family:courier new;
+	background-color: tomato;
+	color : white;
+	font-size: 21px;
+	border-radius : 5px;
+	display: inline-block;
+	border: 1px solid tomato;
+	border-sizing:border-box;
+	cursor:pointer;
+	width:25%;
+}
+#login,#clearfields
+{
+	width:12%;
+}
+
+button:hover {
+	background:dodgerblue;
+	color:white	;
+	border: 1px solid dodgerblue;
+}

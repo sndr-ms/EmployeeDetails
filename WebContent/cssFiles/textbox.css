@@ -1,0 +1,60 @@
+@charset "ISO-8859-1";
+input[type=text ]
+{
+	width:25%;
+	text-align:center;
+	opacity:0.6;
+	font-family: courier new;
+	font-size: 21px;
+	border: 2px solid white;
+	border-sizing:border-box;
+	border-radius:5px;
+}
+input[type=password]
+{
+	width:25%;
+	text-align:center;
+	opacity:0.6;
+	font-family: courier new;
+	font-size: 21px;
+	border: 2px solid white;
+	border-sizing:border-box;
+	border-radius:5px;
+}
+input[type=date]
+{
+	width:25%;
+	text-align:center;
+	opacity:0.6;
+	font-family: courier new;
+	font-size: 21px;
+	border: 2px solid white;
+	border-sizing:border-box;
+	border-radius:5px;
+}
+select
+{
+	width:25%;
+	text-align:center;
+	opacity:0.6;
+	font-family: courier new;
+	font-size: 21px;
+	border: 2px solid white;
+	border-sizing:border-box;
+	border-radius:5px;
+}
+.select
+{
+	text-align:center;
+}
+option
+{
+	width:25%;
+	text-align:center;
+	opacity:0.6;
+	font-family: courier new;
+	font-size: 21px;
+	border: 2px solid white;
+	border-sizing:border-box;
+	border-radius:5px;
+}

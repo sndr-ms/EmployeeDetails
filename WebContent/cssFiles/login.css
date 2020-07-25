@@ -1,0 +1,18 @@
+@import "default.css";
+@import "textbox.css";
+@import "button.css";
+@charset "ISO-8859-1";
+
+#clearfields
+{
+	float:right;	
+}
+
+#user
+{
+	width:100%;
+}
+#pwd
+{
+	width:100%;
+}

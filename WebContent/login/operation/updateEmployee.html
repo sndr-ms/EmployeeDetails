@@ -1,0 +1,29 @@
+<script type="text/javascript" src="/EmployeeDetails/jquery-3.5.1.js"></script>
+<script src="/EmployeeDetails/login/operation/updateEmployee.js"></script>
+<div id=updateFetch>
+<input type=text name=empId id=eid placeholder="Employee ID" maxlength=7>
+<button id=fetch>Fetch Record</button>
+</div><br><br>
+<div id=fetchContain></div><br><br>
+<div id=updateContainer>
+<input type="checkbox" id=enameCheck name=empNameCheck>
+<label for=enameCheck>EmployeeName</label>&nbsp;&nbsp;&nbsp;
+<input type="checkbox" id=edesignationCheck name=empDesignationCheck>
+<label for=edesignationCheck>EmployeeDesignation</label>&nbsp;&nbsp;&nbsp;
+<input type="checkbox" id=edobCheck name=empDobCheck>
+<label for=edobCheck>EmployeeDOB</label><br><br>
+<form id=updateForm>
+<input type=text name="empName" id="ename" placeholder="Employee Name" maxlength=25><br><br>
+<select name="empDesignation" id="edesignation" class="select"  >
+<option value="Designation" selected>Designation</option>
+<option value="ceo">CEO</option>
+<option value="generalmanager">GM</option>
+<option value="ManagingDirector">MD</option>
+<option value="developer">Developer</option>
+</select><br><br>
+<input type=date name="empDob" id="edob" placeholder="Date Of Birth" min="1980-01-01" max="2000-01-01"><br><br>
+<button type=button id="updaterecord">Update Record</button>
+</form>
+</div>
+<br>
+<button type=button id="updateanother">Update Another Record</button>

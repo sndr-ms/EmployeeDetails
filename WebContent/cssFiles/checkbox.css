@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+input[type=checkbox]
+{
+	opacity:0.6;
+	border-radius:5px;
+	cursor:pointer;
+}
+
+label
+{
+	color:white;
+	font-family:courier new;
+	font-size:20px;
+}

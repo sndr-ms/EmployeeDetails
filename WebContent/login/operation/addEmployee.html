@@ -1,0 +1,18 @@
+<! DOCTYPE html >
+<script type="text/javascript" src="/EmployeeDetails/jquery-3.5.1.js"></script>
+<script src="/EmployeeDetails/login/operation/addemployee.js"></script>
+<div id="addEmployee">
+<form id=addForm>
+<input type=text name="ename" id="en" placeholder="Employee Name" maxlength=25><br><br>
+<select name="designation" id="dropdown" class="select"  >
+<option value="Designation" selected>Designation</option>
+<option value="ceo">CEO</option>
+<option value="generalmanager">GM</option>
+<option value="ManagingDirector">MD</option>
+<option value="developer">Developer</option>
+</select><br><br>
+<input type=date name="dateofbirth" id="dob" placeholder="Date Of Birth" min="1980-01-01" max="2000-01-01" ><br><br>
+<button type=button id="add">Submit</button>
+</form><br><br>
+<div id=data></div>
+</div>

@@ -1,0 +1,7 @@
+@import "default.css";
+@import "button.css";
+@charset "ISO-8859-1";
+button
+{
+	width: 25%;
+}
