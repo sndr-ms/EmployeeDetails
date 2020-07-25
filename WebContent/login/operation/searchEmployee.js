@@ -22,6 +22,7 @@ function search(){
 		data:{
 			empId:$("#id").val()
 		},
+		cache:false,
 		success:function(res){
 			if(parseInt(res)!==0){
 				$("#result").html(res);

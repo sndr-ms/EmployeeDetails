@@ -17,6 +17,7 @@ function deleteRecord(){
 		data:{
 			empId:$("#id").val()
 		},
+		cache:false,
 		success:function(res){
 			if(parseInt(res)!==0){
 				if(res!==null && res.length!==0){
@@ -27,8 +28,17 @@ function deleteRecord(){
 							url:"/EmployeeDetails/DeleteRecordMain",
 							data:{
 								empId:$("#id").val()
+							},
+							cache:false,
+							success:function(res){
+								if(parseInt(res)!==0)
+								{
+									alert($("#id").val()+" "+res);
+									$("#id").val("");
+								}
 							}
 						});
+						
 					}
 					else
 					{
@@ -41,4 +51,3 @@ function deleteRecord(){
 		}
 	});
 }
-

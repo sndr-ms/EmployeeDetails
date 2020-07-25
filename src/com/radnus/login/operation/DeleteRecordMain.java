@@ -34,9 +34,9 @@ public class DeleteRecordMain extends HttpServlet {
 		// TODO Auto-generated method stub
 		String empId=request.getParameter("empId").toLowerCase();
 		PrintWriter out=response.getWriter();
-		response.setContentType("text/javascript");
+		response.setContentType("text");
 		String result=deleteRecord(empId);
-		out.print("alert(\""+result+"\")");
+		out.print(result);
 	}
 
 	/**
