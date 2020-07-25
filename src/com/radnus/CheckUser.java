@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.DriverManager;
 import java.sql.Connection;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -42,7 +42,6 @@ public class CheckUser extends HttpServlet {
 		check=checkUser(username,password);
 		if(check)
 		{
-			
 			out.print("true");
 		}
 	}
@@ -58,8 +57,9 @@ public class CheckUser extends HttpServlet {
 		{
 			Class.forName("org.postgresql.Driver");
 			Connection connect=DriverManager.getConnection("jdbc:postgresql://localhost:5432/training","postgres","sndr26ms");
-			Statement select=connect.createStatement();
-			ResultSet result=select.executeQuery("select password from adminlogin where username='"+uname+"'");
+			PreparedStatement select=connect.prepareStatement("select password from adminlogin where username=?");
+			select.setString(1,uname);
+			ResultSet result=select.executeQuery();
 			String pswd="";
 			while(result.next())
 			{
