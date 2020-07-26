@@ -1,12 +1,14 @@
+var employeeId;
 $(function(){
 	$("#delete").click(function(){
-		if($("#id").val().length==7 && $("#id").val().substring(0,3).match(/emp/i) && 
-				$("#id").val().substring(3,7).match(/\d/g))
+		employeeId=$("#id").val();
+		if(employeeId.length==7 && employeeId.substring(0,3).match(/emp/i) && 
+				employeeId.substring(3,7).match(/\d/g))
 		{ 
 			deleteRecord();
 		}
 		else
-			warn();
+			alert("Enter valid Employee Id");
 	});
 });
 
@@ -15,7 +17,7 @@ function deleteRecord(){
 	$.ajax({
 		url:"/EmployeeDetails/DeleteRecord",
 		data:{
-			empId:$("#id").val()
+			empId:employeeId
 		},
 		cache:false,
 		success:function(res){
@@ -27,13 +29,13 @@ function deleteRecord(){
 						$.ajax({
 							url:"/EmployeeDetails/DeleteRecordMain",
 							data:{
-								empId:$("#id").val()
+								empId: employeeId
 							},
 							cache:false,
 							success:function(res){
 								if(parseInt(res)!==0)
 								{
-									alert($("#id").val()+" "+res);
+									alert(employeeId+" "+res);
 									$("#id").val("");
 								}
 							}
@@ -46,7 +48,7 @@ function deleteRecord(){
 					}
 				}
 				else
-					alert($("#id").val()+" record doesn't exist");
+					alert(employeeId+" record doesn't exist");
 			}
 		}
 	});

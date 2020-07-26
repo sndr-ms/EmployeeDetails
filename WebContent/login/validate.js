@@ -8,13 +8,15 @@ $(function(){
 
 function checkUser(){
 
-	if( $("#user").val().length !==0 && $("#pwd").val().length !==0){
+	var username=$("#user").val();
+	var password=$("#pwd").val();
+	if( username.length !==0 && password.length !==0){
 		$.ajax({
 			type: "POST",
 			url:"/EmployeeDetails/CheckUser",
 			data:{
-				uname:$("#user").val(),
-				pswd:$("#pwd").val()
+				uname:username,
+				pswd:password
 			},
 			dataType:'html',
 			success:function(res){

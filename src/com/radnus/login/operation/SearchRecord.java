@@ -91,9 +91,18 @@ public class SearchRecord extends HttpServlet {
 			Class.forName("org.postgresql.Driver");
 			PreparedStatement searchRecord=null;
 			if(id.length()==0)
+			{
+				searchRecord=connect.prepareStatement("update employeerecords set age=age(employeerecords.dob)");
+				searchRecord.executeUpdate();
 				searchRecord=connect.prepareStatement("select * from employeerecords order by id ASC");
+			}
 			else
-				searchRecord=connect.prepareStatement("select * from employeerecords where id='"+id+"'");
+			{
+				searchRecord=connect.prepareStatement("update employeerecords set age=age(employeerecords.dob)");
+				searchRecord.executeUpdate();
+				searchRecord=connect.prepareStatement("select * from employeerecords where id=?");
+				searchRecord.setString(1,id);
+			}	
 			result=searchRecord.executeQuery();
 		}
 		catch(ClassNotFoundException | SQLException e)

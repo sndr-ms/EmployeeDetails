@@ -1,9 +1,17 @@
+var employeeName;
+var employeeDesignation;
+var employeeDob;
 $(function()
 {
-	var $patt=new RegExp("^[A-Za-z]+$");
+	
+	var $patt=new RegExp("^[A-Za-z ]+$");
 	$("#add").click(function(){
-		if($("#en").val().length!==0 && $("#dropdown").val()!=="Designation" && $("#dob").val().length !==0 ){
-			if($("#en").val().length<25 && $patt.test($("#en").val()))
+		employeeName=$("#en").val();
+		employeeDesignation=$("#dropdown").val();
+		employeeDob=$("#dob").val();
+
+		if(employeeName.length!==0 && employeeDesignation!=="Designation" && employeeDob.length !==0 ){
+			if(employeeName.length<25 && $patt.test(employeeName))
 				{
 					addInfo();
 				}
@@ -26,9 +34,9 @@ function addInfo(){
 			type: "GET",
 			url: "/EmployeeDetails/AddEmployee",
 			data: {
-				ename :$("#en").val(),
-				designation : $("#dropdown").val(),
-				dateofbirth : $("#dob").val()
+				ename :employeeName,
+				designation : employeeDesignation,
+				dateofbirth : employeeDob
 			},
 			success: function(res){
 				if(parseInt(res)!==0)

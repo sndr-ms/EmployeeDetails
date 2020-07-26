@@ -1,6 +1,9 @@
+var employeeId;
+var employeeName;
+var employeeDesignation;
+var employeeDob;
 var fetch=false;
-var id="";
-var $enamePattern=new RegExp("^[A-za-z]+$");
+var $enamePattern=new RegExp("^[A-za-z ]+$");
 $(function(){
 	$("#updateanother").hide();
 	changeVisibility();
@@ -8,8 +11,9 @@ $(function(){
 	
 	$("#fetch").click(function(){
 
-		if($("#eid").val()!==undefined && $("#eid").val().length==7 && $("#eid").val().substring(0,3).match(/emp/i)
-				&& $("#eid").val().substring(3,7).match(/\d/g))
+		employeeId=$("#eid").val();
+		if( employeeId.length==7 && employeeId.substring(0,3).match(/emp/i)
+				&& employeeId.substring(3,7).match(/\d/g))
 		{
 			fetchRecord();
 		}
@@ -23,6 +27,7 @@ $(function(){
 		if($("#enameCheck").prop('checked')==false)
 		{
 			$("#ename").val("");
+			employeeName=$("#ename").val();
 			$("#ename").prop('disabled',true);
 		}
 		else
@@ -34,6 +39,7 @@ $(function(){
 		if($("#edesignationCheck").prop('checked')==false)
 		{
 			$("#edesignation").val("Designation");
+			employeeDesignation=$("#edesignation").val();
 			$("#edesignation").prop('disabled',true);
 		}
 		else
@@ -46,6 +52,7 @@ $(function(){
 		if($("#edobCheck").prop('checked')==false)
 		{
 			$("#edob").val("");
+			employeeDob=$("#edob").val();
 			$("#edob").prop('disabled',true);
 		}
 		else
@@ -54,8 +61,21 @@ $(function(){
 	});
 	
 	$("#updaterecord").click(function(){
-		if($enamePatter.test($("#ename").val()))
+		employeeName=$("#ename").val();
+		employeeDesignation=$("#edesignation").val();
+		employeeDob=$("#edob").val();
+		
+		if( ($("#enameCheck").prop('checked')==true && $enamePattern.test(employeeName)) || ($("#enameCheck").prop('checked')==false && employeeName==""))
+		{
 			updateRecord();
+		}
+		else
+		{
+			$("#ename").val("");
+			employeeName=$("#ename").val();
+			alert("Enter valid Name!");
+		}
+			
 	});
 	$("#updateanother").click(refreshUpdate);
 });
@@ -99,8 +119,9 @@ function fetchRecord()
 		type:"GET",
 		url:"/EmployeeDetails/SearchRecord",
 		data:{
-			empId:$("#eid").val()
+			empId:employeeId
 			},
+		cache:false,
 		success:function(res){
 			if(parseInt(res)!==0)
 			{
@@ -111,7 +132,7 @@ function fetchRecord()
 					changeVisibility();
 					$("#updaterecord").hide('fast');
 					$("#updateanother").show('fast');
-					id=$("#eid").val();
+					employeeId=$("#eid").val();
 					changeVisibilityUpdateFetch();
 					
 				}
@@ -124,6 +145,7 @@ function warn()
 {
 	alert("Enter valid Employee Id");
 	$("#eid").val("");
+	employeeId=$("#eid").val();
 }
 
 function changeVisibilityUpdateFetch()
@@ -138,11 +160,12 @@ function updateRecord()
 		type:"GET",
 		url:"/EmployeeDetails/UpdateEmployee",
 		data:{
-			empId:id,
-			empName:$("#ename").val(),
-			empDesignation:$("#edesignation").val(),
-			empDob:$("#edob").val()
+			empId:employeeId,
+			empName:employeeName,
+			empDesignation:employeeDesignation,
+			empDob:employeeDob
 		},
+		cache:false,
 		success:function(res){
 			if(parseInt(res)!==0)
 			{

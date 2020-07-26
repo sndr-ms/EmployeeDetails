@@ -40,7 +40,7 @@ public class UpdateEmployee extends HttpServlet {
 		String empDesignation=request.getParameter("empDesignation");
 		String empDob=request.getParameter("empDob");
 		empName=(empName.length()==0)?null:empName;
-		empDesignation=(empDesignation.length()==0)?null:empDesignation;
+		empDesignation=(empDesignation.equals("Designation"))?null:empDesignation;
 		empDob=(empDob.length()==0)?null:empDob;
 		PrintWriter out=response.getWriter();
 		ResultSet result=update(empId,empName,empDesignation,empDob);

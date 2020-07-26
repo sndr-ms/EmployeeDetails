@@ -1,7 +1,9 @@
+var employeeId;
 $(function(){
 	$("#send").click(function(){
-		if($("#id").val().length==7 && $("#id").val().substring(0,3).match(/emp/i) && 
-				$("#id").val().substring(3,7).match(/\d/g))
+		employeeId=$("#id").val();
+		if(employeeId.length==7 && employeeId.substring(0,3).match(/emp/i) && 
+				employeeId.substring(3,7).match(/\d/g))
 		{ 
 			search();
 		}
@@ -10,6 +12,7 @@ $(function(){
 	});
 	$("#listall").click(function(){
 		$("#id").val("");
+		employeeId=$("#id").val();
 		search();
 	});
 });
@@ -20,7 +23,7 @@ function search(){
 		type:"GET",
 		url:"/EmployeeDetails/SearchRecord",
 		data:{
-			empId:$("#id").val()
+			empId:employeeId
 		},
 		cache:false,
 		success:function(res){
@@ -33,6 +36,6 @@ function search(){
 }
 
 function warn(){
-	alert("enter valid employee id");
+	alert("Enter valid employee id");
 	$("#id").val("");
 }
